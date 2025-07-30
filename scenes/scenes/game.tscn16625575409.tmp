@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://31xeehenxjqq"]
+
+[ext_resource type="PackedScene" uid="uid://crlgkxvxrayq0" path="res://scenes/nodes/player.tscn" id="1_o8158"]
+[ext_resource type="PackedScene" uid="uid://cnsqxxb07dob5" path="res://scenes/nodes/area_2d.tscn" id="2_tag3m"]
+[ext_resource type="PackedScene" uid="uid://ck7nql7567xn8" path="res://scenes/nodes/slime.tscn" id="3_x44q3"]
+
+[sub_resource type="GDScript" id="GDScript_x44q3"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	for base_enemy in get_tree().get_nodes_in_group(\"enemies\"):
+		base_enemy.connect(\"hit_player\", $player, \"take_damage\")
+"
+
+[node name="game" type="Node2D"]
+script = SubResource("GDScript_x44q3")
+
+[node name="player" parent="." instance=ExtResource("1_o8158")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="Area2D" parent="." instance=ExtResource("2_tag3m")]
+position = Vector2(36, -7)
+scale = Vector2(0.5, 0.5)
+
+[node name="slime" parent="." instance=ExtResource("3_x44q3")]
+position = Vector2(-81, -26)

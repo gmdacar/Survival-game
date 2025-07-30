@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnsqxxb07dob5"]
+
+[ext_resource type="Script" uid="uid://bh3wutgqmhanm" path="res://scripts/area_2d.gd" id="1_a3blv"]
+[ext_resource type="Texture2D" uid="uid://b8bu0u1q50knn" path="res://assets/sprites/slabe.png" id="2_bqrh3"]
+[ext_resource type="FontFile" uid="uid://dbagkfoqaql80" path="res://assets/fonts/MUNRO-sharedassets0.assets-232.otf" id="3_a2f4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uopjr"]
+size = Vector2(25, 20)
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_a3blv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bqrh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_uopjr")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -19.0
+offset_right = 54.0
+offset_bottom = -3.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("3_a2f4y")
+text = "баина лох"

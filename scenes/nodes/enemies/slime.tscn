@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck7nql7567xn8"]
+
+[ext_resource type="PackedScene" uid="uid://dwo1hlqdqgxtw" path="res://scenes/nodes/enemies/base_enemy.tscn" id="1_d213e"]
+[ext_resource type="Script" uid="uid://b6agw26ro0aon" path="res://scripts/zombie.gd" id="2_xae8s"]
+[ext_resource type="Texture2D" uid="uid://ou2wd4msgch6" path="res://assets/sprites/player.png" id="3_m14yc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fv2h"]
+atlas = ExtResource("3_m14yc")
+region = Rect2(1, 0, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyflj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fv2h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8lfo"]
+size = Vector2(40, 42)
+
+[node name="Base_enemy" instance=ExtResource("1_d213e")]
+collision_mask = 5
+script = ExtResource("2_xae8s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(3.55271e-15, -3.55271e-15)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kyflj")
+
+[node name="player_checking" type="Area2D" parent="." index="3"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_checking" index="0"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_v8lfo")

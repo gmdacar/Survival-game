@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfc0je6vsixav"]
+
+[ext_resource type="Texture2D" uid="uid://q4hl7fy7wa3y" path="res://assets/sprites/water.png" id="1_hrji2"]
+[ext_resource type="Script" uid="uid://dtabegp3t1ftr" path="res://scenes/generation/tile_map_layer.gd" id="1_j02at"]
+[ext_resource type="Texture2D" uid="uid://br7xgewo7my3c" path="res://assets/sprites/grass.png" id="2_cnmp5"]
+[ext_resource type="Texture2D" uid="uid://7u3dnoqjlr7d" path="res://assets/sprites/stone.png" id="3_vev04"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lltle"]
+texture = ExtResource("1_hrji2")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11yfi"]
+texture = ExtResource("2_cnmp5")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm04s"]
+texture = ExtResource("3_vev04")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_wa8m3"]
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_lltle")
+sources/1 = SubResource("TileSetAtlasSource_11yfi")
+sources/2 = SubResource("TileSetAtlasSource_cm04s")
+
+[node name="TileMapLayer" type="TileMapLayer"]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+tile_set = SubResource("TileSet_wa8m3")
+script = ExtResource("1_j02at")

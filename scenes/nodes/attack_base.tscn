@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dixpkyc40fxtx"]
+
+[ext_resource type="Script" uid="uid://c2clv6tesd7d5" path="res://scripts/attack_base.gd" id="1_ijx0q"]
+
+[node name="attack_base" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_ijx0q")

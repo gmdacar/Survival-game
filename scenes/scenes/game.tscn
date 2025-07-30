@@ -1,0 +1,67 @@
+[gd_scene load_steps=18 format=3 uid="uid://31xeehenxjqq"]
+
+[ext_resource type="PackedScene" uid="uid://crlgkxvxrayq0" path="res://scenes/nodes/player.tscn" id="1_o8158"]
+[ext_resource type="PackedScene" uid="uid://cnsqxxb07dob5" path="res://scenes/nodes/environment/sign.tscn" id="2_tag3m"]
+[ext_resource type="PackedScene" uid="uid://ck7nql7567xn8" path="res://scenes/nodes/enemies/slime.tscn" id="3_x44q3"]
+[ext_resource type="PackedScene" uid="uid://bfc0je6vsixav" path="res://scenes/generation/tile_map_layer.tscn" id="4_0ntwy"]
+[ext_resource type="Texture2D" uid="uid://q4hl7fy7wa3y" path="res://assets/sprites/water.png" id="5_7hbgd"]
+[ext_resource type="Texture2D" uid="uid://br7xgewo7my3c" path="res://assets/sprites/grass.png" id="6_6tfbh"]
+[ext_resource type="Texture2D" uid="uid://dj050632crm" path="res://assets/sprites/sand.png" id="6_7hbgd"]
+[ext_resource type="Texture2D" uid="uid://7u3dnoqjlr7d" path="res://assets/sprites/stone.png" id="7_jvrcg"]
+[ext_resource type="Texture2D" uid="uid://dqkpsme32k51j" path="res://assets/sprites/snow.png" id="9_6tfbh"]
+[ext_resource type="PackedScene" uid="uid://dq3fl8sdyawvy" path="res://scenes/control/health_bar.tscn" id="10_jvrcg"]
+
+[sub_resource type="GDScript" id="GDScript_x44q3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8dyr"]
+texture = ExtResource("5_7hbgd")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tfbh"]
+texture = ExtResource("6_7hbgd")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lus0h"]
+texture = ExtResource("6_6tfbh")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5kuhn"]
+texture = ExtResource("7_jvrcg")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jvrcg"]
+texture = ExtResource("9_6tfbh")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rdssh"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_d8dyr")
+sources/4 = SubResource("TileSetAtlasSource_5kuhn")
+sources/3 = SubResource("TileSetAtlasSource_lus0h")
+sources/2 = SubResource("TileSetAtlasSource_6tfbh")
+sources/5 = SubResource("TileSetAtlasSource_jvrcg")
+
+[node name="game" type="Node2D"]
+script = SubResource("GDScript_x44q3")
+
+[node name="player" parent="." instance=ExtResource("1_o8158")]
+unique_name_in_owner = true
+z_index = 5
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(3, 3)
+
+[node name="Area2D" parent="." instance=ExtResource("2_tag3m")]
+position = Vector2(36, -7)
+scale = Vector2(0.5, 0.5)
+
+[node name="zombie" parent="." instance=ExtResource("3_x44q3")]
+z_index = 4
+position = Vector2(-81, -26)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("4_0ntwy")]
+scale = Vector2(0.4, 0.4)
+tile_set = SubResource("TileSet_rdssh")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("10_jvrcg")]
