@@ -9,7 +9,7 @@ signal signal_hp_changed(health, maxhealth)
 func _ready() -> void:
 	hp_changed()
 	for base_enemy in get_tree().get_nodes_in_group("enemies"):
-		base_enemy.connect("player_hit", (Callable(self, "take_damage")))
+		base_enemy.connect("signal_player_hit", (Callable(self, "take_damage")))
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:

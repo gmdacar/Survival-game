@@ -1,20 +1,21 @@
 extends Enemy
+
 var _visible = false
+
 @onready var player: CharacterBody2D = %player
 
 func _ready() -> void:
 	damage = 5
 	speed = 5
 	hp = 10
+	
 	$player_checking.body_entered.connect(player_showen)
 	$player_checking.body_exited.connect(player_hidden)
 
-@warning_ignore("unused_parameter")
-func player_showen(body):
+func player_showen(_body):
 	_visible = true
 
-@warning_ignore("unused_parameter")
-func player_hidden(body):
+func player_hidden(_body):
 	_visible = false
 
 func move(delta):
@@ -25,4 +26,3 @@ func move(delta):
 
 func _physics_process(delta: float):
 	move(delta)
-	move_and_slide()
