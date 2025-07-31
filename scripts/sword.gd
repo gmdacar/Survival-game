@@ -6,7 +6,3 @@ func _ready():
 	animation_player.play("attack")
 	damage = 2
 	ranger = false
-
-func created():
-	super()
-	pass

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfc0je6vsixav"]
 
 [ext_resource type="Texture2D" uid="uid://q4hl7fy7wa3y" path="res://assets/sprites/water.png" id="1_hrji2"]
-[ext_resource type="Script" uid="uid://dtabegp3t1ftr" path="res://scenes/generation/tile_map_layer.gd" id="1_j02at"]
+[ext_resource type="Script" uid="uid://dtabegp3t1ftr" path="res://scripts/tile_map_layer.gd" id="1_j02at"]
 [ext_resource type="Texture2D" uid="uid://br7xgewo7my3c" path="res://assets/sprites/grass.png" id="2_cnmp5"]
 [ext_resource type="Texture2D" uid="uid://7u3dnoqjlr7d" path="res://assets/sprites/stone.png" id="3_vev04"]
 
