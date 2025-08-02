@@ -2,10 +2,8 @@ extends Enemy
 
 var _visible = false
 
-@onready var player: CharacterBody2D = %player
-
 func _ready() -> void:
-	damage = 5
+	damage = 50
 	speed = 5
 	hp = 10
 	

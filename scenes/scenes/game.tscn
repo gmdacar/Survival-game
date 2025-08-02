@@ -58,7 +58,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="zombie" parent="." instance=ExtResource("3_x44q3")]
 z_index = 4
-position = Vector2(-81, -26)
+position = Vector2(-85, -34)
 
 [node name="TileMapLayer" parent="." instance=ExtResource("4_0ntwy")]
 scale = Vector2(0.4, 0.4)

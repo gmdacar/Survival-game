@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwo1hlqdqgxtw"]
+[gd_scene load_steps=5 format=3 uid="uid://dwo1hlqdqgxtw"]
 
 [ext_resource type="Script" uid="uid://bgm0itfkyeq2f" path="res://scripts/base_enemy.gd" id="1_5k4fx"]
+[ext_resource type="AudioStream" uid="uid://du1aym5ttpdp4" path="res://assets/sounds/hitHurt.wav" id="2_sngsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ue47n"]
 size = Vector2(6, 6)
@@ -24,6 +25,9 @@ shape = SubResource("RectangleShape2D_xb1x3")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HitHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sngsl")
 
 [connection signal="body_entered" from="Attack_area" to="." method="damage_attacked"]
 [connection signal="timeout" from="Timer" to="." method="func_timeout"]

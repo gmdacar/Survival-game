@@ -11,17 +11,16 @@ signal closeattacked(damage)
 func _ready():
 	area_entered.connect(self.attack)
 	
-	for base_enemy in get_tree().get_nodes_in_group("enemies"):
-		connect("closeattacked", Callable(base_enemy, "take_damage"))
-	
 	collision_mask = 4
 
 func _process(_delta) -> void:
 	rotating()
 
-func attack(_area):
+func attack(area):
+	connect("closeattacked", Callable(area.get_parent(), "take_damage"))
 	if ranger == false:
 		emit_signal("closeattacked", damage)
+	disconnect("closeattacked", Callable(area.get_parent(), "take_damage"))
 
 func rotating():
 	look_at(get_global_mouse_position())
